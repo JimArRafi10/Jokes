@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         catList.setAdapter(adapter);
 
         FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction().replace(R.id.fragment_frame, new Main());
+        FragmentTransaction transaction = manager.beginTransaction().replace(R.id.fragment_frame, new Main(getResources().getString(R.string.Url)+"Any?amount=10"));
         transaction.commit();
     }
 }

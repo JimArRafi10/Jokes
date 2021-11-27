@@ -8,10 +8,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jokesapp.R;
+import com.example.jokesapp.fragments.Main;
 
 import java.util.List;
 
@@ -69,7 +74,38 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         notifyItemChanged(positionOfCard);
         positionOfCard = getAdapterPosition();
         notifyItemChanged(positionOfCard);
+        
+        if(cats.get(positionOfCard).equals("Any")){
+            loadFragment(v, new Main(v.getContext().getResources().getString(R.string.Url)+"Any?amount=10"));
+        }
+        if(cats.get(positionOfCard).equals("Programming")){
+            loadFragment(v, new Main(v.getContext().getResources().getString(R.string.Url)+"Programming?amount=10"));
+        }
+        if(cats.get(positionOfCard).equals("Misc")){
+            loadFragment(v, new Main(v.getContext().getResources().getString(R.string.Url)+"Misc?amount=10"));
+        }
+        if(cats.get(positionOfCard).equals("Dark")){
+            loadFragment(v, new Main(v.getContext().getResources().getString(R.string.Url)+"Dark?amount=10"));
+        }
+        if(cats.get(positionOfCard).equals("Pun")){
+            loadFragment(v, new Main(v.getContext().getResources().getString(R.string.Url)+"Pun?amount=10"));
+        }
+        if(cats.get(positionOfCard).equals("Spooky")){
+            loadFragment(v, new Main(v.getContext().getResources().getString(R.string.Url)+"Spooky?amount=10"));
+        }
+        if(cats.get(positionOfCard).equals("Christmas")){
+            loadFragment(v, new Main(v.getContext().getResources().getString(R.string.Url)+"Christmas?amount=10"));
+        }
+
 
         }
+    }
+
+    public void loadFragment(View v, Fragment fragment){
+        AppCompatActivity activity = (AppCompatActivity) v.getContext();
+        FragmentManager manager = activity.getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction().replace(R.id.fragment_frame, new Main(activity.getResources().getString(R.string.Url)+"Any"));
+        transaction.commit();
+
     }
 }
