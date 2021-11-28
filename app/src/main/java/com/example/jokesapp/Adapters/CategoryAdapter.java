@@ -41,7 +41,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
          holder.catName.setText(cats.get(position));
          if(positionOfCard == position){
-             //set card background green
+             //set card background cyan
              holder.mCardView.setCardBackgroundColor(Color.CYAN);
 
          } else{
